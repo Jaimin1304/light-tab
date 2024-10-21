@@ -1,7 +1,8 @@
 {
     "manifest_version": 3,
     "name": "LightTabs",
-    "version": "1.0",
+    "description": "hi description here",
+    "version": "1.0.0",
     "permissions": [
         "tabs",
         "storage"
@@ -12,5 +13,19 @@
     },
     "background": {
         "service_worker": "background.js"
+    },
+    "commands": {
+        "move_up": {
+            "suggested_key": {
+                "default": "Alt+W"
+            },
+            "description": "Move selection up"
+        },
+        "move_down": {
+            "suggested_key": {
+                "default": "Alt+S"
+            },
+            "description": "Move selection down"
+        }
     }
 }

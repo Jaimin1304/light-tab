@@ -1,15 +1,17 @@
-chrome.runtime.onInstalled.addListener(() => {
-    chrome.storage.sync.set({ spaces: [] });
-});
+chrome.commands.onCommand.addListener((command) => {
+    if (command === 'move_up') {
+        chrome.runtime.sendMessage({ action: 'move_up' })
+    } else if (command === 'move_down') {
+        chrome.runtime.sendMessage({ action: 'move_down' })
+    }
+})
 
-chrome.tabs.onRemoved.addListener(() => {
-    chrome.storage.sync.get({ spaces: [] }, (result) => {
-        const currentSpace = result.spaces.find((space) => space.isActive);
-        if (currentSpace) {
-            chrome.tabs.query({}, (tabs) => {
-                currentSpace.tabs = tabs.map((tab) => tab.url);
-                chrome.storage.sync.set({ spaces: result.spaces });
-            });
-        }
-    });
-});
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    if (message.action === 'move_up') {
+        moveSelection('up')
+    } else if (message.action === 'move_down') {
+        moveSelection('down')
+    } else if (message.action === 'open_selected_space') {
+        switchToSelectedSpace()
+    }
+})
