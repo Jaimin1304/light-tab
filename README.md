@@ -1,1 +1,1 @@
-# light-tab
+# light-tabs
