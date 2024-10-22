@@ -1,31 +1,28 @@
 {
-    "manifest_version": 3,
-    "name": "LightTabs",
-    "description": "hi description here",
-    "version": "1.0.0",
-    "permissions": [
-        "tabs",
-        "storage"
-    ],
-    "action": {
-        "default_popup": "popup.html",
-        "default_icon": "icon.png"
+  "manifest_version": 3,
+  "name": "LightTabs",
+  "description": "hi description here",
+  "version": "1.0.0",
+  "permissions": ["tabs", "storage"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "commands": {
+    "move_up": {
+      "suggested_key": {
+        "default": "Alt+W"
+      },
+      "description": "Move selection up"
     },
-    "background": {
-        "service_worker": "background.js"
-    },
-    "commands": {
-        "move_up": {
-            "suggested_key": {
-                "default": "Alt+W"
-            },
-            "description": "Move selection up"
-        },
-        "move_down": {
-            "suggested_key": {
-                "default": "Alt+S"
-            },
-            "description": "Move selection down"
-        }
+    "move_down": {
+      "suggested_key": {
+        "default": "Alt+S"
+      },
+      "description": "Move selection down"
     }
+  }
 }
